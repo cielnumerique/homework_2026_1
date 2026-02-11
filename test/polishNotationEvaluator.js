@@ -28,4 +28,25 @@ QUnit.module("Тестируем функцию polishNotationEvaluator", functi
 
         assert.equal(isNaN(result), true);
     });
+
+    QUnit.test("Правильно обрабатывает нечисловое выражение", function(assert) {
+        const input = "+ a 3";
+        const result = polishNotationEvaluator(input);
+
+        assert.equal(isNaN(result), true);
+    });
+
+    QUnit.test("Правильно обрабатывает выражения с недостаточным числом операндов", function(assert) {
+        const input = "+ - 3 7";
+        const result = polishNotationEvaluator(input);
+
+        assert.equal(isNaN(result), true);
+    });
+
+    QUnit.test("Правильно обрабатывает выражения с лишними операндами", function(assert) {
+        const input = "+ 3 7 11";
+        const result = polishNotationEvaluator(input);
+
+        assert.equal(result, 10);
+    })
 });

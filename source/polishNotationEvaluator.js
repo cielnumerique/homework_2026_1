@@ -18,7 +18,7 @@
  */
 
 const polishNotationEvaluator = expression => {
-    if (expression.trim() === '') {
+    if (!expression.trim()) {
         return NaN;
     }
 

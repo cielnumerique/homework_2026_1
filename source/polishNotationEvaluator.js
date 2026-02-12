@@ -53,7 +53,7 @@ const polishNotationEvaluator = expression => {
                     break;
             }
         } else {
-            stack.push(Number(token));
+            stack.push(+token);
         }
         return _;
     }, null);

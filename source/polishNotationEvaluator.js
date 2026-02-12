@@ -18,6 +18,10 @@
  */
 
 const polishNotationEvaluator = expression => {
+    if (typeof expression !== 'string') {
+        return NaN;
+    }
+    
     if (!expression.trim()) {
         return NaN;
     }

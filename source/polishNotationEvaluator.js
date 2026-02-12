@@ -25,9 +25,7 @@ const polishNotationEvaluator = expression => {
     const tokens = expression.split(/\s+/);
     const stack = [];
 
-    for (let i = tokens.length - 1; i >= 0; i--) {
-        const token = tokens[i];
-
+    tokens.reduceRight((_, token) => {
         if (['+', '-', '*', '/'].includes(token)) {
             const a = stack.pop();
             const b = stack.pop();
@@ -43,17 +41,18 @@ const polishNotationEvaluator = expression => {
                     stack.push(a * b);
                     break;
                 case '/':
-
                     if (b === 0) {
-                        return Infinity * Math.sign(a);
+                        stack.push(Infinity * Math.sign(a));
+                    } else {
+                        stack.push(a / b);
                     }
-                    stack.push(a / b);
                     break;
             }
         } else {
             stack.push(Number(token));
         }
-    }
-
+        return _;
+    }, null);
+    
     return stack.pop();
 };

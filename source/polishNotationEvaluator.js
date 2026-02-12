@@ -17,7 +17,7 @@
  * @returns {number} результат вычисления выражения
  */
 
-const polishNotationEvaluator = function(expression) {
+const polishNotationEvaluator = expression => {
     if (expression.trim() === '') {
         return NaN;
     }

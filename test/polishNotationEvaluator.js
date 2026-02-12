@@ -48,5 +48,12 @@ QUnit.module("Тестируем функцию polishNotationEvaluator", functi
         const result = polishNotationEvaluator(input);
 
         assert.equal(result, 10);
-    })
+    });
+
+    QUnit.test("Правильно обрабатывает нестроковые выражения", function(assert) {
+        const input = null;
+        const result = polishNotationEvaluator(input);
+
+        assert.equal(isNaN(result), true);
+    });
 });

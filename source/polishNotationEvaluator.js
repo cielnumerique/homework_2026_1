@@ -27,12 +27,16 @@ const polishNotationEvaluator = expression => {
 
     const tokens = expression.split(/\s+/);
     const stack = [];
-
+    /**
+     * Обрабатывает токены справа налево, выполняя операции польской нотации
+     * @param {any} _ - аккумулятор (не используется, но требуется для reduceRight)
+     * @param {string} token - текущий токен (оператор или число)
+     * @returns {any} переданный аккумулятор
+    */
     tokens.reduceRight((_, token) => {
         if (['+', '-', '*', '/'].includes(token)) {
             const a = stack.pop();
             const b = stack.pop();
-            
             switch (token) {
                 case '+':
                     stack.push(a + b);

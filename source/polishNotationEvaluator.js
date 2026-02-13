@@ -32,8 +32,8 @@ const polishNotationEvaluator = expression => {
      * @param {any} _ - аккумулятор (не используется, но требуется для reduceRight)
      * @param {string} token - текущий токен (оператор или число)
      * @returns {any} переданный аккумулятор
-    */
-    tokens.reduceRight((_, token) => {
+     */
+    const reducer = (_, token) => {
         if (['+', '-', '*', '/'].includes(token)) {
             const a = stack.pop();
             const b = stack.pop();
@@ -59,7 +59,9 @@ const polishNotationEvaluator = expression => {
             stack.push(+token);
         }
         return _;
-    }, null);
+    };
+    
+    tokens.reduceRight(reducer, null);
     
     return stack.pop();
 };

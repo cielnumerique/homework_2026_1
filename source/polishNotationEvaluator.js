@@ -16,7 +16,6 @@
  * 
  * @returns {number} результат вычисления выражения
  */
-
 const polishNotationEvaluator = expression => {
     if (typeof expression !== 'string') {
         return NaN;

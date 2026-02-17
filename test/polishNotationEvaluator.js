@@ -56,4 +56,11 @@ QUnit.module("Тестируем функцию polishNotationEvaluator", functi
 
         assert.equal(isNaN(result), true);
     });
+
+    QUnit.test("Правильно обрабатывает строковые объекты", function(assert) {
+        const input = new String("+ 3 6");
+        const result = polishNotationEvaluator(input);
+
+        assert.equal(result, 9);
+    });
 });

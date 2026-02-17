@@ -1,8 +1,4 @@
 'use strict'; 
-/* Данная директива включает "строгий режим", который накладывает ряд ограничений
-(запрещает ряд конструкций, которые часто приводят к ошибкам, тем самым предотвращая эти ошибки)
-*/
-
 /**
  * Функция для вычисления выражений в польской нотации (префиксной нотации)
  * @param {string} expression - строка с выражением в польской нотации
@@ -17,7 +13,7 @@
  * @returns {number} результат вычисления выражения
  */
 const polishNotationEvaluator = expression => {
-    if (typeof expression !== 'string') {
+    if (typeof expression !== 'string' && !(expression instanceof String)) {
         return NaN;
     }
     
